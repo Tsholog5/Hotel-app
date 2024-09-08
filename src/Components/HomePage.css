@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; 
+    padding: 20px;
+    color: white;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #f1c40f; 
+}
+
+.book-now-button {
+    background-color: #f1c40f;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.book-now-button:hover {
+    background-color: #d4ac0d;
+    color: white;
+}
+
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+}
+
+.footer-address {
+    text-align: right;
+}
+
+.footer-address p {
+    margin: 0;
+}
+
+.footer-address a {
+    color: #f1c40f;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-address a:hover {
+    color: white;
+}
+.logout-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+}
