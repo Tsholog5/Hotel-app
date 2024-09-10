@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
+import logo from '../Components/Logo.png';
+import mainimage from '../Components/poolarea.jpg'
+
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -17,7 +20,7 @@ const HomePage = () => {
             
             <header className="header">
                 <div className="logo">
-                    <img src="/logo.png" alt="Hotel Logo" />
+                     <img src={logo} />
                 </div>
                 <nav className="nav-menu">
                     <a href="#home">Home</a>
@@ -31,21 +34,22 @@ const HomePage = () => {
             </header>
 
             
-            <div className="main-image">
-                <img src="/hotel-main-image.jpg" alt="Hotel Main" />
+            <div className="second">
+                <div >
+                <img src={mainimage}className="main-image" />
+                </div>
+                <footer className="footer">
+                    <div className="footer-logo">
+                    <img src={logo} />
+                    </div>
+                    <div className="footer-address">
+                        <p>1234 Luxury Street, Paradise City, PC 12345</p>
+                        <a href="https://goo.gl/maps/your-hotel-address" target="_blank" rel="noopener noreferrer">
+                            View on Google Maps
+                        </a>
+                    </div>
+                </footer>
             </div>
-
-            <footer className="footer">
-                <div className="footer-logo">
-                    <img src="/logo.png" alt="Hotel Logo" />
-                </div>
-                <div className="footer-address">
-                    <p>1234 Luxury Street, Paradise City, PC 12345</p>
-                    <a href="https://goo.gl/maps/your-hotel-address" target="_blank" rel="noopener noreferrer">
-                        View on Google Maps
-                    </a>
-                </div>
-            </footer>
         </div>
     );
 };

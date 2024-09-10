@@ -1,13 +1,17 @@
 .signup-container {
     text-align: center;
     padding: 50px;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
+    background-color: white;
+    box-shadow: #007bff;
+    height: 550px;
+    margin-top: 30px;
 }
 
 .logo {
-    width: 150px;
-    margin-bottom: 20px;
+    width: 250px;
+    height: 250px;
 }
 
 h2 {
@@ -57,14 +61,18 @@ h2 {
     background-color: #0056b3;
 }
 .back-button {
-    display: block;
-    margin-top: 20px;
+   
+    margin-top: 40px;
+    left:10px;
     text-align: center;
     color: #007bff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: color 0.3s ease;
+    justify-content: center;
+    align-content: center;
+    
 }
 
 .back-button:hover {

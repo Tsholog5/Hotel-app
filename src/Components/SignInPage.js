@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignInPage.css';
+import logo from '../Components/Logo.png';
+
 
 const SignInPage = () => {
     const [username, setUsername] = useState('');
@@ -14,16 +16,21 @@ const SignInPage = () => {
         navigate('/home');  
     };
 
+    const handleForgotPassword = () => {
+        navigate ('/ForgotPasswordPage');
+    };
+
     const handleBackToStart = () => {
        
-        navigate('/');  
+        navigate('/signup');  
     };
 
     return (
         <div className="signin-container">
-            <div className="logo">
-                <img src="/logo.png" alt="Logo" />
+            <div >
+                <img src={logo} className="logo" />
             </div>
+            <h3>Where every stay offers a picture-perfect Perspective</h3>
             <h2>Sign In</h2>
             <div className="form-group">
                 <label>Username</label>
@@ -43,10 +50,11 @@ const SignInPage = () => {
                     placeholder="Enter your password"
                 />
             </div>
-            <button className="signin-button" onClick={handleSignIn}>Sign In</button>
+            <button className="signin-button" onClick={handleSignIn}>Sign In</button><br/>
+            <button className="forgot-password-button" onClick={handleForgotPassword}>Forgot Password?</button><br></br>
 
             
-            <button className="back-button" onClick={handleBackToStart}>Back to Start</button>
+            <button className="Don't have an account?Sign-up" onClick={handleBackToStart}>Don't have an account?Sign-up</button>
         </div>
     );
 };

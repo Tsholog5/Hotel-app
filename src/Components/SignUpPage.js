@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignUpPage.css';  
+import './SignUpPage.css'; 
+import logo from '../Components/Logo.png'; 
+import SignInPage from './SignInPage';
 
 const SignUpPage = () => {
     const [email, setEmail] = useState('');
@@ -16,10 +18,12 @@ const SignUpPage = () => {
         navigate('/signin');  
     };
 
+    
     return (
         <div className="signup-container">
-            <img src="/logo.png" alt="Logo" className="logo" />  
-            <h2>Sign Up</h2>
+            <img src={logo} className='logo'/>
+            <h3> Where every stay offers a picture-perfect Perspective</h3> 
+            <h2>CREATE NEW ACCOUNT</h2>
             <form onSubmit={handleSignUp}>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
@@ -56,7 +60,7 @@ const SignUpPage = () => {
                 </div>
                 <button type="submit" className="signup-button">Sign Up</button>
             </form>
-            <button className="back-button" onClick={() => navigate('/')}>Back to Start</button>  
+            <button className="back-button" onClick={() => navigate('/signin')}>Already have an account?Sign-in</button>  
         </div>
     );
 };
