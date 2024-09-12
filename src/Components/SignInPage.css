@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -52,19 +52,28 @@ h2 {
 
 .form-group {
     margin-bottom: 20px;
-    width: 300px;
+    width: 100%;
+    text-align: left;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #555;
 }
 
 .form-group input {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+   
+}
+.form-group form:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .signin-button {
@@ -76,8 +85,27 @@ h2 {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 .signin-button:hover {
     background-color: #2980b9;
+}
+.back-btn{
+    margin-top: 40px;
+    left:10px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    justify-content: center;
+    align-content: center;
+    border: none;
+    
+}
+
+.back-btn:hover {
+    color: #0056b3;
 }

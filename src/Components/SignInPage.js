@@ -31,7 +31,7 @@ const SignInPage = () => {
                 <img src={logo} className="logo" />
             </div>
             <h3>Where every stay offers a picture-perfect Perspective</h3>
-            <h2>Sign In</h2>
+            <h2>SIGN-IN</h2>
             <div className="form-group">
                 <label>Username</label>
                 <input
@@ -54,7 +54,7 @@ const SignInPage = () => {
             <button className="forgot-password-button" onClick={handleForgotPassword}>Forgot Password?</button><br></br>
 
             
-            <button className="Don't have an account?Sign-up" onClick={handleBackToStart}>Don't have an account?Sign-up</button>
+            <button className="back-btn" onClick={handleBackToStart}>Don't have an account?Sign-up</button>
         </div>
     );
 };

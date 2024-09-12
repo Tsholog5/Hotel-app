@@ -5,7 +5,9 @@ import SignInPage from './Components/SignInPage';
 import SignUpPage from './Components/SignUpPage';
 import HomePage from './Components/HomePage'; 
 import ForgotPasswordPage from './Components/ForgotPasswordPage';
+import Rooms from './Components/Rooms';
 
+import './App.css';
 function App() {
     return (
         <Router>
@@ -15,6 +17,7 @@ function App() {
                 <Route path="/signup" element={<SignUpPage />} />  
                 <Route path="/home" element={<HomePage />} /> 
                 <Route path="/ForgotPasswordPage" element={<ForgotPasswordPage />} /> 
+                <Route path="/Rooms" element={<Rooms />} />
                 
             </Routes>
         </Router>
