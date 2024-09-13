@@ -8,6 +8,7 @@ import ForgotPasswordPage from './Components/ForgotPasswordPage';
 import Rooms from './Components/Rooms';
 
 import './App.css';
+
 function App() {
     return (
         <Router>
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/home" element={<HomePage />} /> 
                 <Route path="/ForgotPasswordPage" element={<ForgotPasswordPage />} /> 
                 <Route path="/Rooms" element={<Rooms />} />
+                 
                 
             </Routes>
         </Router>

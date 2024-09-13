@@ -76,46 +76,10 @@ const HomePage = () => {
             Book now</button>
 
         </div>
-        <div className="stay-block">
-          <div className="stay-details">
-            <div className="check-in-out">
-              <label>Check-In:</label>
-              <input className="input" type="date" />
-            </div>
-            <div className="check-in-out">
-              <label>Check-Out:</label>
-              <input className="input" type="date" />
-            </div>
-            <div className="guests">
-              <label>Guests:</label>
-              <div className="guest-controls">
-              <select
-                    className="guest-input"
-                    value={guests}
-                    onChange={(e) => setGuests(e.target.value)}
-                >
-                    <option value="" disabled>Select Guests</option>
-                    {[...Array(15).keys()].map(num => (
-                        <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
-                    ))}
-                </select>
-                <div>
-                  <button className="explorebtn" onClick={handleExplore}>
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-           </div>
-            </div>
-          </div>
+        
         </div>
 
       </div>
-
-
-
-      
-
       <div className="second">
         
         <div>

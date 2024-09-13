@@ -9,29 +9,55 @@ const Rooms = () => {
   const [guests, setGuests] = useState(1);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  
+  const [roomRatesVisibility, setRoomRatesVisibility] = useState({});
 
-  const handleIncreaseGuests = () => {
-    setGuests(guests + 1);
+  const handleContinue = () => {
+    console.log("User continues to book");
+    navigate("/homepage");
   };
 
-  const handleDecreaseGuests = () => {
-    if (guests > 1) {
-      setGuests(guests - 1);
-    }
+  const handlebooknowbutton = () => {
+    console.log("User book now");
+    navigate("/bookings");
   };
 
-  const handleViewRates = () => {
-    console.log("User views Rates");
-    navigate("/Booking");
+  const handleToggleViewRates = (roomType) => {
+    setRoomRatesVisibility((prevVisibility) => ({
+      ...prevVisibility,
+      [roomType]: !prevVisibility[roomType]
+    }));
   };
 
-  
-
-  const handleRooms = () => {
-    console.log("User book room");
-    navigate("/Booking");
-  };
+  const roomsData = [
+    {
+      roomType: 'Superior Room',
+      image: superiorroom,
+      description:
+        'The superior room is a well-proportioned room, elegant and impressive for a relaxed night away at VIEWS BOUTIQUE HOTEL.',
+      standardRate: 1955,
+    },
+    {
+      roomType: 'Deluxe Room',
+      image: deluxroom,
+      description:
+        'Experience unparalleled luxury in our Deluxe room, where elegance meets comfort.',
+      standardRate: 2244,
+    },
+    {
+      roomType: 'Super Deluxe Room',
+      image: superdeluxroom,
+      description:
+        'Step into a world of unparalleled luxury with our Super Deluxe Room.',
+      standardRate: 2690,
+    },
+    {
+      roomType: 'Executive Suite',
+      image: executivesuite,
+      description:
+        'Elevate your stay in our Executive Suite, where business meets pleasure.',
+      standardRate: 3229,
+    },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,95 +76,57 @@ const Rooms = () => {
             Check-Out:
             <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
           </label>
-        </div>
-
-        <div className="guest-controls">
-          <label>Guests:</label>
-          <div className="guest-buttons">
-          <select
-                            className="guest-input"
-                            value={guests}
-                            onChange={(e) => setGuests(e.target.value)}
-                        >
-                            <option value="" disabled>Select Guests</option>
-                            {[...Array(15).keys()].map(num => (
-                                <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
-                            ))}
-                        </select>
-          </div>
+          <label>
+            Guests:
+            <select value={guests} onChange={(e) => setGuests(e.target.value)}>
+              <option value="" disabled>Select Guests</option>
+              {[...Array(15).keys()].map(num => (
+                <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
+              ))}
+            </select>
+          </label>
         </div>
       </div>
 
       <div className="your-stay-form">
         <h3>Your Stay</h3>
         <form onSubmit={handleSubmit}>
-          <label>Check-In: {checkInDate}</label>
-          <br />
-          <label>Check-Out: {checkOutDate}</label>
-          <br />
-          <label>Number of Guests: {guests}</label>
-          <br />
-          <button type="submit">Continue</button>
+          <div className="form-group">
+            <label>Check-In: {checkInDate}</label>
+          </div>
+          <div className="form-group">
+            <label>Check-Out: {checkOutDate}</label>
+          </div>
+          <div className="form-group">
+            <label>Guests: {guests}</label>
+          </div>
+          <button className="continue-button">Continue</button>
         </form>
       </div>
 
       <div className="room-selection">
-        <h2>Select Room</h2>
+        <h2>SELECT A ROOM</h2>
         <div className="room-cards">
-          <div className="room-card">
-            <img src={superiorroom} alt="Superior Room"  />
-            <div className="room-info">
-              <h4>Superior Room</h4>
-              <p>The superior room is a well proportioned room, elegant and impressive for a relaxed night away at 
-                 VIEWS BOUTIQUE HOTEL.
-
-                 Complete with a double bed, air conditioned, room service, coffee/tea maker , free WIFI and a cool 
-                 but sophisticated decor, it is the ultimate room for work , rest and pleasure.</p>
-                 <button className="ViewRates" onClick={handleViewRates}>ViewRates</button>
+          {roomsData.map((room) => (
+            <div key={room.roomType} className="room-card">
+              <img src={room.image} alt={room.roomType} />
+              <div className="room-info">
+                <h4>{room.roomType}</h4>
+                <p>{room.description}</p>
+                <button className="view-rates-button" onClick={() => handleToggleViewRates(room.roomType)}>
+                  {roomRatesVisibility[room.roomType] ? 'Hide Rates' : 'View Rates'}
+                </button>
+                {roomRatesVisibility[room.roomType] && (
+                  <div className="room-rates">
+                    <p>Standard Rate: R{room.standardRate}</p>
+                    <p>15% VAT: R{(room.standardRate * 0.15).toFixed(2)}</p>
+                    <p>Total per night: R{(room.standardRate + room.standardRate * 0.15).toFixed(2)} (includes breakfast)</p>
+                    <button className="book-now-button">Book Now</button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className="room-card">
-            <img src={deluxroom} alt="Delux room" />
-            <div className="room-info">
-              <h4>Deluxe Room</h4>
-              <p>Experience unparalleled luxury in our Deluxe room, where elegance meets comfort. Enjoy spacious
-                 surroundings,exquisite furnishings, and top-notch amenities designed for the ultimate relaxation and 
-                 indulgence. Perfect for those seeking a sophisticated escape with a touch of opulence.
-
-                 Complete with 1 king size bed, robe and hair dryer,WIFI and complementary on-site parking. </p>
-                 <button className="ViewRates" onClick={handleViewRates}>ViewRates</button>
-            </div>
-          </div>
-
-          <div className="room-card">
-            <img src={superdeluxroom} alt="Super Deluxe Room" />
-            <div className="room-info">
-              <h4>Super Deluxe Room</h4>
-              <p>Step into a world of unparalleled luxury with our Super Deluxe Room. This exquisite retreats boasts an 
-                expensive layout,premium furnishings, and lavish amenities designed for those who crave the finest
-                in comfort and style. Elevate your stay to new heights of elegance and sophistication. 
-
-                                  
-               Complete living/sitting room,separate bathtub and shower , premium movie channels and full 
-               business centre onsite.</p>
-               <button className="ViewRates" onClick={handleViewRates}>ViewRates</button>
-            </div>
-          </div>
-
-          <div className="room-card">
-            <img src={executivesuite} alt="Executive Suite" />
-            <div className="room-info">
-              <h4>Executive Suite</h4>
-              <p>Elevate your stay in our Executive Suite, where business meets pleasure in perfect harmony. Revel in  elegantly 
-                 spacious designed interiors, state-of-the-art amenities, and dedicated workspaces that cater to your ile
-                 professional needs while offering unmatched comfort and sophistication for ultimate relaxation.
-
-                 Completed with dining area,separate living room,office set-up,complimentary slippers and 
-                 personalised mini bar.</p>
-                 <button className="ViewRates" onClick={handleViewRates}>ViewRates</button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
