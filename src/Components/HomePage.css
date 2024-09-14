@@ -10,11 +10,7 @@ body {
     margin-top: 20px;
 }
 
-.home-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+
 
 .header {
     display: flex;
@@ -220,7 +216,7 @@ h6{
 }
 
 .hotel-message {
-    width: 55%;
+    width: 100%;
     color: #333; 
     text-align: left;
     padding-left: 20px; 
@@ -232,8 +228,8 @@ h6{
 
 .hotel-message p {
     font-size: 16px;
-    line-height: 1.5;
-    width: 70%;
+    line-height: 1.8;
+    width: 100%;
 }
 .hotelview{
     max-width: 100%;

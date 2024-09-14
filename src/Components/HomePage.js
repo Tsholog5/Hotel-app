@@ -4,6 +4,7 @@ import "./HomePage.css";
 import logo from "../Components/Logo.png";
 import hotelview from "../Components/hotelview.jpg";
 import heroimage from "../Components/hero.jpg";
+import Navigation from "./navigation";
 
 import {
   FaBed,
@@ -36,33 +37,12 @@ const HomePage = () => {
     navigate("/rooms");
   }
 
-  const handleIncreaseGuests = () => {
-    setGuests(guests + 1);
-  };
 
-  const handleDecreaseGuests = () => {
-    if (guests > 1) {
-      setGuests(guests - 1);
-    }
-  };
 
   return (
     <div className="home-container">
-      <header className="header">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
-        </div>
-        <nav className="nav-menu">
-          <a href="#home">Home</a>
-          <a href="#explore">Explore</a>
-          <a href="#rooms">Rooms</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          
-          <button className="book-now-button" onclick={handlebooknowbutton}>Book Now</button>
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </nav>
-      </header>
+      
+      <Navigation />
 
       <div className="hero">
         <div className="heros">
@@ -91,7 +71,20 @@ const HomePage = () => {
               <p>
                 Wake up to breathtaking view that turn every morning into a
                 masterpiece. Your room is not just a place to stay, it’s a
-                front-row seat to nature’s finest show.
+                front-row seat to nature’s finest show.<br></br>
+
+                VIEWS BOUTIQUE HOTEL, epitomizes opulence and elegance,set against a backdrop of
+                breathtaking natural beauty.This exclusive hotel is renowned for it’s unparalleled
+                panoramic views,which stretch across sweeping landscapes.<br></br>
+
+                The hotel’s architecture seamlessly blends modern sophistication with timeless charm, creating
+                a sanctuary of comfort and style.<br></br>
+
+                VIEWS BOUTIQUE HOTEL is not just a place to stay; it’s an immersive experience where every aspect
+                is designed to celebrate and elevate the natural beauty that defines its location.
+
+
+
               </p>
             </div>
           </div>
