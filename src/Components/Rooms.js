@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import './Rooms.css';
+import logo from "../Components/Logo.png";
 import superiorroom from '../Components/superior room.jpg';
 import deluxroom from '../Components/Delux room.jpg';
 import superdeluxroom from '../Components/super delux room.jpg';
@@ -67,72 +68,101 @@ const Rooms = () => {
   };
 
   return (
-    <div className="rooms-page">
-      <div className="stay-controls">
-        <div className="stay-dates">
-          <label>
-            Check-In:
-            <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
-          </label>
-          <label>
-            Check-Out:
-            <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
-          </label>
-          <label>
-            Guests:
-            <select value={guests} onChange={(e) => setGuests(e.target.value)}>
-              <option value="" disabled>Select Guests</option>
-              {[...Array(15).keys()].map(num => (
-                <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
-              ))}
-            </select>
-          </label>
+    <div className="home-container">
+      <div className="header">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+        <ul className="nav-menu">
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/explore">Explore</Link>
+          </li>
+          <li>
+            <Link to="/rooms">Rooms</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+        <div className="nav-buttons">
+          <button className="book-now-button" onClick={handleBookNowButton}>Book Now</button>
+          <button className="logout-button" onClick={() => console.log('Logout')}>Logout</button>
         </div>
       </div>
 
-      <div className="your-stay-form">
-        <h3>Your Stay</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Check-In: {checkInDate}</label>
+      <div className="rooms-page">
+        <div className="stay-controls">
+          <div className="stay-dates">
+            <label>
+              Check-In:
+              <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
+            </label>
+            <label>
+              Check-Out:
+              <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
+            </label>
+            <label>
+              Guests:
+              <select value={guests} onChange={(e) => setGuests(e.target.value)}>
+                <option value="" disabled>Select Guests</option>
+                {[...Array(15).keys()].map(num => (
+                  <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
+                ))}
+              </select>
+            </label>
           </div>
-          <div className="form-group">
-            <label>Check-Out: {checkOutDate}</label>
-          </div>
-          <div className="form-group">
-            <label>Guests: {guests}</label>
-          </div>
-          <button type="submit" className="continue-button" onClick={handleContinue}>
-            Continue
-          </button>
-        </form>
-      </div>
+        </div>
 
-      <div className="room-selection">
-        <h2>SELECT A ROOM</h2>
-        <div className="room-cards">
-          {roomsData.map((room) => (
-            <div key={room.roomType} className="room-card">
-              <img src={room.image} alt={room.roomType} />
-              <div className="room-info">
-                <h4>{room.roomType}</h4>
-                <p>{room.description}</p>
-                <button className="view-rates-button" onClick={() => handleToggleViewRates(room.roomType)}>
-                  {roomRatesVisibility[room.roomType] ? 'Hide Rates' : 'View Rates'}
-                </button>
-                {roomRatesVisibility[room.roomType] && (
-                  <div className="room-rates">
-                    <p>Standard Rate: R{room.standardRate}</p>
-                    <p>15% VAT: R{(room.standardRate * 0.15).toFixed(2)}</p>
-                    <p>Total per night: R{(room.standardRate + room.standardRate * 0.15).toFixed(2)} (includes breakfast)</p>
-                    <button className="book-now-button" onClick={handleBookNowButton}>
-                      Book Now
-                    </button>
-                  </div>
-                )}
-              </div>
+        <div className="your-stay-form">
+          <h3>Your Stay</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Check-In: {checkInDate}</label>
             </div>
-          ))}
+            <div className="form-group">
+              <label>Check-Out: {checkOutDate}</label>
+            </div>
+            <div className="form-group">
+              <label>Guests: {guests}</label>
+            </div>
+            <button type="submit" className="continue-button" onClick={handleContinue}>
+              Continue
+            </button>
+          </form>
+        </div>
+
+        <div className="room-selection">
+          <h2>SELECT A ROOM</h2>
+          <div className="room-cards">
+            {roomsData.map((room) => (
+              <div key={room.roomType} className="room-card">
+                <img src={room.image} alt={room.roomType} />
+                <div className="room-info">
+                  <h4>{room.roomType}</h4>
+                  <p>{room.description}</p>
+                  <button className="view-rates-button" onClick={() => handleToggleViewRates(room.roomType)}>
+                    {roomRatesVisibility[room.roomType] ? 'Hide Rates' : 'View Rates'}
+                  </button>
+                  {roomRatesVisibility[room.roomType] && (
+                    <div className="room-rates">
+                      <p>Standard Rate: R{room.standardRate}</p>
+                      <p>15% VAT: R{(room.standardRate * 0.15).toFixed(2)}</p>
+                      <p>Total per night: R{(room.standardRate + room.standardRate * 0.15).toFixed(2)} (includes breakfast)</p>
+                      <button className="book-now-button" onClick={handleBookNowButton}>
+                        Book Now
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

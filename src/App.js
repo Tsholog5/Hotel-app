@@ -7,8 +7,10 @@ import HomePage from "./Components/HomePage";
 import ForgotPasswordPage from "./Components/ForgotPasswordPage";
 import Rooms from "./Components/Rooms";
 import Bookings from "./Components/Bookings";
+import Contact from "./Components/Contact";
 import About from "./Components/About";
-import "./App.css";
+import Explore from "./Components/Explore";
+import "./App.css"
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/Bookings" element={<Bookings />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Explore" element={<Explore />} />
       </Routes>
     </Router>
   );
