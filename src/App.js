@@ -10,6 +10,8 @@ import Bookings from "./Components/Bookings";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
 import Explore from "./Components/Explore";
+import Checkout from "./Components/Checkout";
+
 import "./App.css"
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Explore" element={<Explore />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );
