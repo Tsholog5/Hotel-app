@@ -74,7 +74,37 @@ const About = () => {
             you and making your stay exceptional.
           </p>
         </div>
+
+        <div className="statements">
+            <div className="vision">
+            <h1>VISION</h1>
+            <p>Our vision at VIEWS BOUTIQUE HOTEL is to set a new standard for luxury and uniqueness in the hospitality
+                industry. We strive to be the foremost destination for discerning travelers who seek not just a place
+                to stay but a personalized experience that goes beyond the ordinary.<br></br>
+                By integrating exceptional design,distinctive character, and paralleled service,we aim to craft memorable
+                experiences that inspire and delight every guest.We envision a future where our commitment to excellence
+                redefines the BOUTIQUE HOTEL experience and where our name is synonymous with sophistication and
+                individualized care.
+            </p>
+                  </div>
+                  <div className="mission">
+            <h1>MISSION</h1>
+            <p>
+              At VIEWS BOUTIQUE HOTEL,our mission is to deliver an extraordinary level of service and hospitality that sets
+              us apart from the rest.We are dedicated to providing our guests with an experience that blends elegance with comfort,
+              offering a warm and welcoming utmosphere tailored to their individual preferences.
+            
+              Our team is committed to attention to detail and personalizing every aspect of our service to ensure that each guest's stay
+              is as memorable and enjoyable as possible. By fostering a culture of excellence and genuine care, we aim to create a
+              distinctive haven where guests can unwind ,rejuvenate,and truly feel at home. Through our continuous pursuit of quality and
+              innovation ,we seek to build lasting relationships with our guests and become their preferred choice for luxury Boutique
+               accommodations.
+            </p>
+                  </div>
+        </div>
       </div>
+
+      
     </div>
   );
 };

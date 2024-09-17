@@ -96,47 +96,7 @@ const Rooms = () => {
         </div>
       </div>
 
-      <div className="rooms-page">
-        <div className="stay-controls">
-          <div className="stay-dates">
-            <label>
-              Check-In:
-              <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
-            </label>
-            <label>
-              Check-Out:
-              <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
-            </label>
-            <label>
-              Guests:
-              <select value={guests} onChange={(e) => setGuests(e.target.value)}>
-                <option value="" disabled>Select Guests</option>
-                {[...Array(15).keys()].map(num => (
-                  <option key={num + 1} value={num + 1}>{num + 1} Guests</option>
-                ))}
-              </select>
-            </label>
-          </div>
-        </div>
-
-        <div className="your-stay-form">
-          <h3>Your Stay</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Check-In: {checkInDate}</label>
-            </div>
-            <div className="form-group">
-              <label>Check-Out: {checkOutDate}</label>
-            </div>
-            <div className="form-group">
-              <label>Guests: {guests}</label>
-            </div>
-            <button type="submit" className="continue-button" onClick={handleContinue}>
-              Continue
-            </button>
-          </form>
-        </div>
-
+    
         <div className="room-selection">
           <h2>SELECT A ROOM</h2>
           <div className="room-cards">
@@ -164,7 +124,7 @@ const Rooms = () => {
             ))}
           </div>
         </div>
-      </div>
+      
     </div>
   );
 };

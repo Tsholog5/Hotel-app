@@ -16,18 +16,18 @@ const Booking = () => {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
 
-  // Room prices
+  
   const roomPrices = {
     'Deluxe Room': 200,
     'Standard Room': 150,
   };
 
-  // Calculate the number of nights based on check-in and check-out dates
+ 
   const calculateNights = (checkIn, checkOut) => {
     const checkInDate = new Date(checkIn);
     const checkOutDate = new Date(checkOut);
     const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
-    return Math.ceil(differenceInTime / (1000 * 3600 * 24)); // convert to days
+    return Math.ceil(differenceInTime / (1000 * 3600 * 24));
   };
 
   const nights = checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0;
@@ -52,7 +52,9 @@ const Booking = () => {
   };
 
   return (
+    
     <div className="booking-page">
+  
       <h1>Confirm Your Booking</h1>
 
       <div className="booking-details">
@@ -62,8 +64,10 @@ const Booking = () => {
           <label htmlFor="room">Room Type:</label>
           <select id="room" value={room} onChange={(e) => setRoom(e.target.value)} required>
             <option value="">Select Room</option>
+            <option value="Superior Room">Superior Room</option>
             <option value="Deluxe Room">Deluxe Room</option>
-            <option value="Standard Room">Standard Room</option>
+            <option value="Super Deluxe Room"> Super Deluxe Room</option>
+            <option value="Executive Room">Executive Room</option>
           </select>
         </div>
 

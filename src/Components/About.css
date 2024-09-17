@@ -31,3 +31,22 @@ margin: 0 auto;
     line-height: 1.8;
     width: 100%;
 }
+.statements{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
+      
+}
+.vision{
+    width: 100%;
+    border: 2px solid;
+    border-radius: 20px;
+
+}
+
+.mission{
+    width: 100%;
+    border: 2px solid;
+    border-radius: 20px;
+}
