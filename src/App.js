@@ -11,6 +11,7 @@ import Contact from "./Components/Contact";
 import About from "./Components/About";
 import Explore from "./Components/Explore";
 import Checkout from "./Components/Checkout";
+import RoomSelection from "./Components/RoomSelection";
 
 import "./App.css"
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Explore" element={<Explore />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/RoomSelection" element={<RoomSelection />} />
       </Routes>
     </Router>
   );

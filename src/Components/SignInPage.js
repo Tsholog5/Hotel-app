@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignInPage.css';
 import logo from '../Components/Logo.png';
+import {useSelector,useDispatch} from 'react-redux'
+import { signIn } from '../Redux/auth'
+import  {auth} from '../Config/Firebase'
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
 
 
 const SignInPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+
     const navigate = useNavigate();
+    const dispatch=useDispatch()
+    const {user,loading,error}=useSelector((state) => state.auth);
 
     const handleSignIn = () => {
-        
-        console.log('User signed in with', { username, password });
-
-        navigate('/home');  
+        dispatch(signIn({email,password}))  
     };
+
+    useEffect(() => {
+        if (user) {
+            alert('SignIn successful!');
+            navigate('/home');
+        }
+        }, [user, navigate]);
 
     const handleForgotPassword = () => {
         navigate ('/ForgotPasswordPage');
@@ -33,12 +45,12 @@ const SignInPage = () => {
             <h3>Where every stay offers a picture-perfect Perspective</h3>
             <h2>SIGN-IN</h2>
             <div className="form-group">
-                <label>Username</label>
+                <label>Email</label>
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter your username"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
                 />
             </div>
             <div className="form-group">
@@ -51,6 +63,11 @@ const SignInPage = () => {
                 />
             </div>
             <button className="signin-button" onClick={handleSignIn}>Sign In</button><br/>
+
+            {loading && <h1>Loading...</h1>}
+            {error && <p>{error}</p>}
+
+
             <button className="forgot-password-button" onClick={handleForgotPassword}>Forgot Password?</button><br></br>
 
             
