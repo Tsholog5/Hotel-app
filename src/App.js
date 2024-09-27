@@ -12,11 +12,23 @@ import About from "./Components/About";
 import Explore from "./Components/Explore";
 import Checkout from "./Components/Checkout";
 import RoomSelection from "./Components/RoomSelection";
-
+import BookingSummary from "./Components/BookingSummary";
+import Admin from '../src/Admin/Admin';
+import AdminDashboard from "./Components/AdminDashboard";
+import UserProfile from "./Components/UserProfile";
 import "./App.css"
+import { PayPalScriptProvider,PayPalButtons } from "@paypal/react-paypal-js";
+
+const initialOptions = {
+  clientId: "AdoEVKfKOQ3XTYkG9IRKiXLwu9JpjBa5yft-p4Gqfu601W4sAcvEBZaLbG6vMGxwr4YBPtI7CfxsNDlQ",
+  currency: "USD",
+  intent: "capture",
+};
+
 
 function App() {
   return (
+    <PayPalScriptProvider options={initialOptions}>
     <Router>
       <Routes>
         <Route path="/" element={<StartupPage />} />
@@ -32,8 +44,14 @@ function App() {
         <Route path="/Explore" element={<Explore />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/RoomSelection" element={<RoomSelection />} />
+        <Route path="/BookingSummary" element={<BookingSummary />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/Admin" element={<Admin />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
       </Routes>
-    </Router>
+      
+    </Router></PayPalScriptProvider>
+    
   );
 }
 

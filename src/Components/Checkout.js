@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Checkout.css';
+import { addBookingSuccess,addBookings } from '../Redux/dbSlice';
 
 const Checkout = () => {
   const [room, setRoom] = useState('');
