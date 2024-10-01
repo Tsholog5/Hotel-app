@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"; 
 import { useDispatch, useSelector } from "react-redux"; 
 import { addRoom, deleteRoom, updateRoom, fetchRooms, selectRooms } from "../Redux/roomSlice"; 
-import { db } from '../Config/Firebase';
+import { db, storage } from '../Config/Firebase'; // Ensure to import storage
 import { collection, getDocs } from 'firebase/firestore'; 
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import required functions from storage
 import "./Admin.css";
 
 const Admin = () => {
@@ -28,19 +29,24 @@ const Admin = () => {
         dispatch(fetchRooms());
     }, [dispatch]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!roomName || !price || !image) { 
             alert("All fields are required!");
             return;
         }
 
+        // Upload image to Firebase Storage
+        const storageRef = ref(storage, `rooms/${image.name}`);
+        const snapshot = await uploadBytes(storageRef, image);
+        const imageUrl = await getDownloadURL(snapshot.ref); // Get the URL of the uploaded image
+
         const formData = {
             roomName,
             guests,
             duration,
             price,
-            image 
+            image: imageUrl // Use the image URL
         };
 
         if (editingId) {
