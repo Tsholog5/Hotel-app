@@ -1,143 +1,50 @@
-// roomSlice.js
-import { createSlice } from '@reduxjs/toolkit';
-import { getDocs, collection, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../Config/Firebase';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = {
+// Async thunk to fetch data (rooms in this case)
+export const fetchData = createAsyncThunk('rooms/fetchData', async () => {
+  const response = await fetch('your_api_endpoint_here'); // replace with your API endpoint
+  if (!response.ok) throw new Error('Failed to fetch rooms');
+  return await response.json();
+});
+
+const roomSlice = createSlice({
+  name: 'rooms',
+  initialState: {
     data: [],
     loading: false,
     error: null,
-    reservedRoom: null,
-    bookings: [],
-};
-
-// Create room slice
-const roomSlice = createSlice({
-    name: 'room',
-    initialState,
-    reducers: {
-        setLoading(state) {
-            state.loading = true;
-            state.error = null;
-        },
-        setData(state, action) {
-            state.data = action.payload;
-            state.loading = false;
-        },
-        setError(state, action) {
-            state.error = action.payload;
-            state.loading = false;
-        },
-        reserveRoom(state, action) {
-            state.reservedRoom = action.payload;
-        },
-        clearReservation(state) {
-            state.reservedRoom = null;
-        },
-        addBookingSuccess(state, action) {
-            state.bookings.push(action.payload);
-            state.loading = false;
-        },
-        setBookingData(state, action) {
-            state.bookings = action.payload;
-            state.loading = false;
-        },
-        removeRoom(state, action) {
-            state.data = state.data.filter(room => room.id !== action.payload);
-        },
-        updateRoom(state, action) {
-            const index = state.data.findIndex(room => room.id === action.payload.id);
-            if (index !== -1) {
-                state.data[index] = action.payload;
-            }
-        },
+  },
+  reducers: {
+    addRoom: (state, action) => {
+      state.data.push(action.payload);
     },
+    clearReservation: (state) => {
+      // Add logic for clearing reservations if needed
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload; // Assuming payload is the array of rooms
+      })
+      .addCase(fetchData.rejected, (state, action) => {  // Corrected this case
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
 });
 
-// Selector to get the rooms data
-export const selectRooms = (state) => state.room.data;
-export const selectBookings = (state) => state.room.bookings; // Selector for bookings
+// Selectors
+export const selectData = (state) => state.rooms.data;
+export const selectLoading = (state) => state.rooms.loading;
+export const selectError = (state) => state.rooms.error;
 
-export const {
-    setLoading,
-    setData,
-    setError,
-    reserveRoom,
-    clearReservation,
-    addBookingSuccess,
-    setBookingData,
-    removeRoom,
-    updateRoom,
-} = roomSlice.actions;
+// Export the addRoom action
+export const { addRoom, clearReservation } = roomSlice.actions;
 
 export default roomSlice.reducer;
-
-// Async actions to handle Firebase interactions
-
-// Fetch rooms from Firestore
-export const fetchRooms = () => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        const querySnapshot = await getDocs(collection(db, "Rooms"));
-        const roomsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        dispatch(setData(roomsData));
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};
-
-// Add a new room to Firestore
-export const addRoom = (roomData) => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        const docRef = await addDoc(collection(db, "Rooms"), roomData);
-        dispatch(setData({ id: docRef.id, ...roomData }));
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};
-
-// Delete a room from Firestore
-export const deleteRoom = (id) => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        await deleteDoc(doc(db, "Rooms", id));
-        dispatch(removeRoom(id));
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};
-
-// Update a room in Firestore
-export const updateRoomAsync = (roomData) => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        await updateDoc(doc(db, "Rooms", roomData.id), roomData);
-        dispatch(updateRoom(roomData)); // Update the state with the new room data
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};
-
-// Add a booking to Firestore
-export const addBookings = (bookingData) => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        const docRef = await addDoc(collection(db, "Bookings"), bookingData);
-        dispatch(addBookingSuccess({ id: docRef.id, ...bookingData }));
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};
-
-// Fetch bookings from Firestore
-export const fetchBookings = () => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-        const querySnapshot = await getDocs(collection(db, "Bookings"));
-        const bookingsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        dispatch(setBookingData(bookingsData));
-    } catch (error) {
-        dispatch(setError(error.message));
-    }
-};

@@ -1,77 +1,193 @@
-.admin-container {
-    max-width: 800px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    background-color: #f9f9f9; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa; /* Light background for contrast */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #343a40; /* Dark sidebar */
+  color: white;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 1.6em;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin: 15px 0;
+  padding: 12px;
+  cursor: pointer;
+  background-color: #495057;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+.sidebar-nav li.active {
+  background-color: #007bff; /* Active tab color */
+  font-weight: bold;
+}
+
+.sidebar-nav li:hover {
+  background-color: #6c757d;
+}
+
+/* Main Content Section Styles */
+main {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #ffffff; /* White background for main content */
+  overflow-y: auto;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  font-size: 2em;
+  color: #343a40;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+p {
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+/* Room Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #dee2e6;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 1.1em;
+  color: #495057;
+}
+
+th {
+  background-color: #f1f3f5;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Add Room Form */
+.add-room-form {
+  margin-top: 40px;
+}
+
+.add-room-form h2 {
+  font-size: 1.6em;
+  color: #343a40;
+}
+
+.add-room-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-room-form input,
+.add-room-form select {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1.1em;
+  color: #495057;
+}
+
+.add-room-form input:focus,
+.add-room-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.add-room-form button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  font-size: 1.1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    flex-direction: column;
   }
-  
-  h2 {
-    text-align: center; 
-    color: #333; 
-  }
-  
-  form {
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
-    margin-bottom: 20px; 
-  }
-  
-  label {
-    font-weight: bold; 
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  input[type="file"] {
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #28a745; 
-    color: white; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-  }
-  
-  button:hover {
-    background-color: #218838; 
-  }
-  
-  table {
+
+  .sidebar {
     width: 100%;
-    border-collapse: collapse; 
-    margin-top: 20px; 
+    padding: 10px;
   }
-  
+
+  .sidebar-nav li {
+    margin: 10px 0;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
   th, td {
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
+    font-size: 1em;
+    padding: 10px;
   }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold; 
-  }
-  
-  tbody tr:hover {
-    background-color: #e9ecef; 
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  tbody tr:nth-child(odd) {
-    background-color: #ffffff; 
-  }
-  
+}
+
+
+
+

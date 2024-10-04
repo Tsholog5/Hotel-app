@@ -1,12 +1,12 @@
 import { configureStore , combineReducers } from '@reduxjs/toolkit';
 import authReducer from './auth';
-import dbSlice from '../Redux/dbSlice';
-import adminReducer from '../Redux/adminSlice';
-import roomReducer from '../Redux/roomSlice';
+import roomSlice from './dbSlice.js';
+import adminReducer from './adminSlice';
+import roomReducer from './roomSlice';
 
 const rootReducer =combineReducers({
   auth: authReducer,
-  data: dbSlice,
+  room: roomSlice,
   admin: adminReducer,
   rooms: roomReducer, 
 });

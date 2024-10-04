@@ -7,7 +7,7 @@ import deluxroom from '../Components/Delux room.jpg';
 import superdeluxroom from '../Components/super delux room.jpg';
 import executivesuite from '../Components/Executive suite.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchData } from '../Redux/dbSlice'; // Ensure this is properly imported
+import { fetchData } from '../Redux/roomSlice';
 
 const Rooms = () => {
   const [guests, setGuests] = useState(1);
@@ -21,9 +21,11 @@ const Rooms = () => {
 
   // Fetch data from Firestore on component mount
   useEffect(() => {
-    // Uncomment this line if fetchData is correctly set up in your Redux slice
-    // dispatch(fetchData()); 
+    dispatch(fetchData()); 
   }, [dispatch]);
+  console.log(data);
+  console.log(loading);
+  console.log(error);
 
   // Static rooms data as fallback in case data is not fetched or is empty
   const roomsData = [
