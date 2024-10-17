@@ -1,0 +1,53 @@
+.explore-container {
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.explore-heading {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.explore-subheading {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.explore-section {
+  margin-bottom: 40px;
+}
+
+.explore-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.amenities-list, .attractions-list, .experiences-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.amenity-item, .attraction-item, .experience-item {
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.amenity-item img, .attraction-item img, .experience-item img {
+  width: 100%;
+  height: 180px;
+  display: block;
+}
+
+.amenity-item p, .attraction-item p, .experience-item p {
+  margin-top: 10px;
+}

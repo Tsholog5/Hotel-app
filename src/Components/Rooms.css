@@ -1,0 +1,137 @@
+.rooms-page {
+  padding: 20px;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stay-controls {
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stay-dates {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stay-dates label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.stay-dates input, .stay-dates select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+
+.your-stay-form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.your-stay-form h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.your-stay-form .form-group {
+  margin-bottom: 15px;
+}
+
+.your-stay-form label {
+  font-size: 16px;
+  color: #666;
+}
+
+.continue-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: #218838;
+}
+
+
+.room-selection {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.room-selection h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+.room-cards {
+ display: flex;
+ justify-content: center;
+ gap: 1.5rem;
+}
+
+.room-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 65%;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.view-rates-button, .book-now-button {
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-left: 20px;
+}
+
+.view-rates-button:hover, .book-now-button:hover {
+  background-color: #0056b3;
+}
+
+.room-rates {
+  margin-top: 15px;
+  text-align: left;
+}
