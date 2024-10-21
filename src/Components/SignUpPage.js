@@ -19,8 +19,8 @@ const SignUpPage = () => {
 
 
     const handleSignUp = () => {
-    dispatch(signUp({email,password}))
-    };
+        dispatch(signUp({ email, password, name: username })); 
+      };
 
     useEffect(() => {
         if (user) {

@@ -16,6 +16,8 @@ import BookingSummary from "./Components/BookingSummary";
 import Admin from '../src/Admin/Admin';
 import AdminDashboard from "./Components/AdminDashboard";
 import UserProfile from "./Components/UserProfile";
+import Reviews from "./Components/Reviews";
+import ReviewForm from "./Components/ReviewForm";
 import Gallery from "./Components/Gallery";
 import "./App.css"
 import { PayPalScriptProvider,PayPalButtons } from "@paypal/react-paypal-js";
@@ -50,6 +52,8 @@ function App() {
         <Route path="/Admin" element={<Admin />} />
         <Route path="/UserProfile" element={<UserProfile />} />
         <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Reviews" element={<Reviews />} />
+        <Route path="/ReviewForm" element={<ReviewForm />} />
       </Routes>
       
     </Router></PayPalScriptProvider>

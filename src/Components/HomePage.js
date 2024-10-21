@@ -5,6 +5,7 @@ import logo from "../Components/Logo.png";
 import hotelview from "../Components/hotelview.jpg";
 import heroimage from "../Components/hero.jpg";
 import Navigation from "./navigation";
+import Reviews from "./Reviews";
 
 import {
   FaBed,
@@ -14,6 +15,7 @@ import {
   FaGlassMartini,
   FaFilm,
 } from "react-icons/fa";
+import ReviewForm from "./ReviewForm";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -148,6 +150,9 @@ const HomePage = () => {
           </div>
         </div>
 
+        <Reviews />
+        <ReviewForm />
+
         <footer className="footer">
           <div className="footer-logo">
             <img src={logo} alt="Footer Logo" />
@@ -159,6 +164,7 @@ const HomePage = () => {
             
             </p>
             
+            
             {/* <a
               href="https://goo.gl/maps/your-hotel-address"
               target="_blank"
@@ -168,7 +174,7 @@ const HomePage = () => {
             </a> */}
           </div>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6994.532686173292!2d24.752819642083523!3d-28.77131394798902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9b1a2cfad5c943%3A0x586f07a3d5e591c3!2sSouth%20Ridge%2C%20Kimberley%2C%208301!5e0!3m2!1sen!2sza!4v1729160090538!5m2!1sen!2sza" width="30%" height="145px"  referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </footer>
+       <br/> </footer>
       </div>
     </div>
   );
